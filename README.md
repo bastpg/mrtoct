@@ -1,6 +1,10 @@
 # mrtoct
 mrtoct is a robust DL network developed by Bastien Guerin and Matthieu Dagommer at the MGH A. A. Martinos Center for Biomedical Imaging for estimation of cortical bone porosity from T1-weighted MR images. Robustness was enforced in the implementation, so the tool should work for a wide range of T1-weighted images and acquisition parameters (although there are no guarantees of the accuracy of results). To improve robustness of the estimation process, the network was trained by focusing backpropagation to voxels located inside a mask of the skull. This mask is estimated using SAMSEG, which is itself a robust tool (reference: Puonti, Oula, Juan Eugenio Iglesias, and Koen Van Leemput. "Fast and sequence-adaptive whole-brain segmentation using parametric Bayesian modeling." NeuroImage 143 (2016): 235-249, webpage: https://surfer.nmr.mgh.harvard.edu/fswiki/Samseg). Obviously, the skull mask needs to be 'liberal' so as not to reject edge skull voxels, which is the reason why we perform a thickening operation in the preprocessing step. The output of the program is the distribution of bone porosity within the mask, which is in [0;1]. The porosity is a useful metric to estimate subject-specific acoustic parameters for transcranial focused ultrasound applications.
 
+<img width="1102" alt="Screen Shot 2024-02-23 at 8 55 46 AM" src="https://github.com/parkerkotlarz/mrtoct/assets/157265957/c1617f21-0048-4c21-86db-e86d2fa41b13">
+
+
+
 # Dependencies
 The followed are utilized in this program: Freesurfer, iso2mesh, tensorflow, tensorflow-addons, nibabel.
 
